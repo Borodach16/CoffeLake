@@ -1,0 +1,21 @@
+﻿@using CoffeLake;
+@model List<Product>
+@{
+    ViewBag.Title = "Товары";
+}
+
+<h2>Товары</h2>
+
+@foreach (var element in Model)
+{
+    <div class="card" style="width: 18rem;">
+        <img src=@element.ImageUrl class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">@element.Caption</h5>
+            <p class="card-text">@element.Price</p>
+            <p class="card-text">@element.Description</p>
+            <p class="card-text">@element.ProductCategory.Caption</p>
+            <a href="#" class="btn btn-primary">Купить</a>
+        </div>
+    </div>
+}

@@ -1,0 +1,23 @@
+﻿@using CoffeLake;
+@model List<CoffeLakeMenu>
+@{
+    ViewBag.Title = "Меню";
+}
+
+<h2>Меню кафе</h2>
+
+<table class="table table-hover table table-bordered table-striped">
+    <tr>
+        <th>Наименование</th>
+        <th>Цена</th>
+        <th>Категория</th>
+    </tr>
+    @foreach (var element in Model)
+    {
+        <tr>
+            <td>@element.Caption</td>
+            <td>@element.Price</td>
+            <td>@element.MenuCategory.Caption</td>
+        </tr>
+    }
+</table>
