@@ -22,9 +22,15 @@ namespace CoffeLake
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            /*bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css"));*/
+
+            bundles.Add(new StyleBundle("~/Content/CustomCss")
+                .Include(
+                "~/Content/Custom/style.css", 
+                "~/Content/Custom/bootstrap.css")
+                );
         }
     }
 }
