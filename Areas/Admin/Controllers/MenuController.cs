@@ -8,13 +8,13 @@ using CoffeLake.Areas.Admin.Models;
 
 namespace CoffeLake.Areas.Admin.Controllers
 {
-    public class ProductController : Controller
+    public class MenuController : Controller
     {
-        // GET: Admin/Products
+        // GET: Admin/Menu
         public ActionResult Index()
         {
             var db = new CoffeLakeContainer();
-            var items = db.ProductSet.Include(x => x.ProductCategory).ToList();
+            var items = db.CoffeLakeMenuSet.Include(x => x.MenuCategory).ToList();
 
             return View(items);
         }
@@ -22,27 +22,25 @@ namespace CoffeLake.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             var db = new CoffeLakeContainer();
-            var model = new ProductsEditPage();
+            var model = new MenuEditPage();
 
-            model.Products = db.ProductSet.Where(x => x.Id == id).FirstOrDefault();
-            model.Categories = db.ProductCategorySet.ToList();
+            model.Menu = db.CoffeLakeMenuSet.Where(x => x.Id == id).FirstOrDefault();
+            model.Categories = db.MenuCategorySet.ToList();
 
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult EditModel(Product model)
+        public ActionResult EditModel(CoffeLakeMenu model)
         {
             var db = new CoffeLakeContainer();
-            var element = db.ProductSet.Where(x => x.Id == model.Id).FirstOrDefault();
+            var element = db.CoffeLakeMenuSet.Where(x => x.Id == model.Id).FirstOrDefault();
 
             if (element != null)
             {
                 element.Caption = model.Caption;
-                element.Description = model.Description;
-                element.Quantity = model.Quantity;
                 element.Price = model.Price;
-                element.ProductCategoryId = model.ProductCategoryId;
+                element.MenuCategoryId = model.MenuCategoryId;
             }
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -53,24 +51,22 @@ namespace CoffeLake.Areas.Admin.Controllers
         public ActionResult Create()
         {
             var db = new CoffeLakeContainer();
-            var model = db.ProductCategorySet.ToList();
+            var model = db.MenuCategorySet.ToList();
 
             return View(model);
         }
-
+        
         [HttpPost]
-        public ActionResult CreateModel(Product model)
+        public ActionResult CreateModel(CoffeLakeMenu model)
         {
             var db = new CoffeLakeContainer();
-            var element = new Product();
+            var element = new CoffeLakeMenu();
 
             element.Caption = model.Caption;
-            element.Description = model.Description;
-            element.Quantity = model.Quantity;
             element.Price = model.Price;
-            element.ProductCategoryId = model.ProductCategoryId;
+            element.MenuCategoryId = model.MenuCategoryId;
 
-            db.ProductSet.Add(element);
+            db.CoffeLakeMenuSet.Add(element);
             db.SaveChanges();
 
             return RedirectToAction("Index");
@@ -79,9 +75,9 @@ namespace CoffeLake.Areas.Admin.Controllers
         public ActionResult Remove(int id)
         {
             var db = new CoffeLakeContainer();
-            var element = db.ProductSet.Where(x => x.Id == id).FirstOrDefault();
+            var element = db.CoffeLakeMenuSet.Where(x => x.Id == id).FirstOrDefault();
 
-            db.ProductSet.Remove(element);
+            db.CoffeLakeMenuSet.Remove(element);
             db.SaveChanges();
 
             return RedirectToAction("Index");

@@ -1,0 +1,33 @@
+﻿@model List<CoffeLakeMenu>
+@{
+    ViewBag.Title = "Меню кафе";
+}
+
+<h2>Меню кафе</h2>
+
+<p>
+    @Html.ActionLink("Создание позиции", "Create", "Menu", new { area = "Admin" }, new { @class = "btn btn-primary " })
+</p>
+
+<table class="table-bordered  table-hover ">
+    <tr>
+        <td>Наименование</td>
+        <td>Цена</td>
+        <td>Категория</td>
+        <td>Действие</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.Caption</td>
+    <td>@item.Price руб.</td>
+    <td>@item.MenuCategory.Caption</td>
+    <td>
+        @Html.ActionLink("Редактировать", "Edit", "Menu", new { area = "Admin", id = item.Id }, new { @class = "btn btn-success " })
+        @Html.ActionLink("Удалить", "Remove", "Menu", new { area = "Admin", id = item.Id }, new { @class = "btn btn-danger " })
+    </td>
+</tr>
+
+    }
+</table>
+

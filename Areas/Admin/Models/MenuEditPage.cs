@@ -5,9 +5,9 @@ using System.Web;
 
 namespace CoffeLake.Areas.Admin.Models
 {
-    public class MenuCafeEditPage
+    public class MenuEditPage
     {
-        public CoffeLakeMenu CoffeLakeMenu { get; set; }
+        public CoffeLakeMenu Menu { get; set; }
         public List<MenuCategory> Categories { get; set; }
     }
 }
