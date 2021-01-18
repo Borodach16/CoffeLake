@@ -1,0 +1,45 @@
+﻿@using CoffeLake.Areas.Admin.Models
+@model MenuCafeEditPage
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Редактирование позиции @Model.CoffeLakeMenu.Caption</h2>
+
+<p>
+    @Html.ActionLink("Назад", "Index", "MenuCafe", new { area = "Admin" }, new { @class = "btn btn-secondary" } )
+</p>
+
+<form action="/Admin/MenuCafe/Save" method="post">
+    <div class="form-group">
+        <label>Наменование</label>
+        <input type="text" class="form-control" placeholder="Введите наименование" value="@Model.CoffeLakeMenu.Caption" name="Caption">
+    </div>
+    <div class="form-group">
+        <label>Описание</label>
+        <textarea class="form-control" rows="3" name="Description" placeholder="Введите описание">@Model.CoffeLakeMenu.Description</textarea>
+    </div>
+    <div class="form-group">
+        <label>Категория</label>
+        <select class="form-control" name="MenuCategoryId">
+            @foreach (var item in Model.Categories)
+            {
+                if (item.Id == Model.CoffeLakeMenu.MenuCategoryId)
+                {
+                    <option selected value="@item.Id">@item.Caption</option>
+                }
+                else
+                {
+                    <option value="@item.Id">@item.Caption</option>
+                }
+            }
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label>Цена</label>
+        <input type="text" class="form-control" placeholder="Введите цену" value="@Model.CoffeLakeMenu.Price" name="Price">
+    </div>
+    <input type="hidden" value="@Model.CoffeLakeMenu.Id" name="Id" />
+    <button type="submit" class="btn btn-primary">Отправить</button>
+</form>

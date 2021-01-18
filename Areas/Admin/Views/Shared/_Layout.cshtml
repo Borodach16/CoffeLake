@@ -1,10 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - CoffeLake</title>
+    <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/CustomCss")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -15,22 +14,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link active" href="/Home/Index">Главная</a>
-                <a class="nav-item nav-link active" href="/Home/About">О нас</a>
-                <a class="nav-item nav-link active" href="/MenuCafe/Index">Меню кафе</a>
-                <a class="nav-item nav-link active" href="/Product/Index">Товары</a>
+                <a class="nav-item nav-link active" href="/Admin/Home/Index">Главная</a>
+                @Html.ActionLink("Меню кафе", "Index", "MenuCafe", new { area = "Admin" }, new { @class = "nav-item nav-link" })
+                @Html.ActionLink("Товары", "Index", "Product", new { area = "Admin" }, new { @class = "nav-item nav-link" })
             </div>
             <div class="navbar-nav">
-                @Html.ActionLink("Администрирование", "Index", "Home", new { area = "Admin" }, new { @class = "nav-item nav-link" })
+                @Html.ActionLink("Выход", "Index", "Home", new { area = "" }, new { @class = "nav-item nav-link" })
             </div>
         </div>
     </nav>
+
     <div class="container-fluid body-content">
         @RenderBody()
-        <hr/>
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Константинов Даниил</p>
-        </footer>
+        <hr />
     </div>
 
     @Scripts.Render("~/bundles/jquery")

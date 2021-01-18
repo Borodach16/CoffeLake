@@ -1,0 +1,67 @@
+﻿@using CoffeLake.Areas.Admin.Models
+
+@model ProductsEditPage
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Редактирование товара @Model.Products.Caption</h2>
+<p>
+    @Html.ActionLink("Назад", "Index", "Product", new { area = "Admin" }, new { @class = "btn btn-secondary" })
+</p>
+
+
+
+<form action="/Admin/Product/EditModel" method="post">
+    <div class="form-group row">
+        <label for="inputName" class="col-sm-2 col-form-label">Наименование</label>
+        <div class="col-sm-3">
+            <input type="text" name="Caption" value="@Model.Products.Caption" class="form-control" id="inputName">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputDescription" class="col-sm-2 col-form-label">Описание</label>
+        <div class="col-sm-10">
+            <input type="text" name="Description" value="@Model.Products.Description" class="form-control" id="inputDescription">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputPrice" class="col-sm-2 col-form-label">Price</label>
+        <div class="col-1">
+            <input type="text" name="Price" value="@Model.Products.Price" class="form-control" id="inputPrice">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputQuantity" class="col-sm-2 col-form-label">Quantity</label>
+        <div class="col-1">
+            <input type="text" name="Quantity" value="@Model.Products.Quantity" class="form-control" id="inputQuantity">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Категория</label>
+        <div class="col-1">
+            <select class="form-control" id="exampleFormControlSelect1" name="ProductsCategoryId">
+                @foreach (var item in Model.Categories)
+                {
+                    if (item.Id == Model.Products.ProductCategoryId)
+                    {
+                        <option selected value="@item.Id">@item.Caption</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Caption</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+    </div>
+    <input type="hidden" name="Id" value="@Model.Products.Id" />
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+    </div>
+</form>
+
