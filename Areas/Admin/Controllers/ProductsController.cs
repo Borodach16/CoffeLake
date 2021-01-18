@@ -43,6 +43,7 @@ namespace CoffeLake.Areas.Admin.Controllers
                 element.Price = model.Price;
                 element.ProductCategoryId = model.ProductCategoryId;
                 element.Quantity = model.Quantity;
+                element.ImageUrl = model.ImageUrl;
             }
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -69,6 +70,7 @@ namespace CoffeLake.Areas.Admin.Controllers
             element.Price = model.Price;
             element.ProductCategoryId = model.ProductCategoryId;
             element.Quantity = model.Quantity;
+            element.ImageUrl = "Пусто";
 
             db.ProductSet.Add(element);
             db.SaveChanges();

@@ -34,7 +34,7 @@
     <div class="form-group row">
         <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Категория</label>
         <div class="col-1">
-            <select class="form-control" id="exampleFormControlSelect1" name="ProductsCategoryId">
+            <select class="form-control" id="exampleFormControlSelect1" name="ProductCategoryId">
                 @foreach (var item in Model.Categories)
                 {
                     if (item.Id == Model.Products.ProductCategoryId)
@@ -55,6 +55,7 @@
             <input type="text" name="Quantity" value="@Model.Products.Quantity" class="form-control" id="inputCountry">
         </div>
     </div>
+    <input type="hidden" name="ImageUrl" value="@Model.Products.ImageUrl" />
     <input type="hidden" name="Id" value="@Model.Products.Id" />
     <div class="form-group row">
         <div class="col-sm-10">
