@@ -18,7 +18,6 @@ namespace CoffeLake
         public CoffeLakeContainer()
             : base("name=CoffeLakeContainer")
         {
-            Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -30,5 +29,6 @@ namespace CoffeLake
         public DbSet<Product> ProductSet { get; set; }
         public DbSet<MenuCategory> MenuCategorySet { get; set; }
         public DbSet<CoffeLakeMenu> CoffeLakeMenuSet { get; set; }
+        public DbSet<Reviews> ReviewsSet { get; set; }
     }
 }

@@ -64,6 +64,7 @@ namespace CoffeLake.Areas.Admin.Controllers
 
             element.Caption = model.Caption;
             element.Price = model.Price;
+            element.Description = model.Description;
             element.MenuCategoryId = model.MenuCategoryId;
 
             db.CoffeLakeMenuSet.Add(element);

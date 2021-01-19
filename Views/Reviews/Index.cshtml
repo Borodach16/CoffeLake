@@ -1,0 +1,23 @@
+﻿@model List<Reviews>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Отзывы</h2>
+
+<p>
+    @Html.ActionLink("Создание отзыва", "Create", "Reviews", new { area = "" }, new { @class = "btn btn-primary " })
+</p>
+
+@foreach (var element in Model)
+{
+    <div class="card" style="width: 18rem;">
+        <img src=@element.PictureUrl class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">@element.ReviewAuthor</h5>
+            <p class="card-text">@element.ReviewText</p>
+            <p class="card-text">@element.Rating</p>
+            @Html.ActionLink("Удаление отзыва", "Remove", "Reviews", new { area = "", id = element.Id }, new { @class = "btn btn-secondary " })
+        </div>
+    </div>
+}

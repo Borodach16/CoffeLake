@@ -20,6 +20,10 @@
         </div>
     </div>
     <div class="form-group row">
+        <label>Описание</label>
+        <textarea class="form-control" rows="3" name="Description" placeholder="Введите описание">@Model.Menu.Description</textarea>
+    </div>
+    <div class="form-group row">
         <label for="inputPrice" class="col-sm-2 col-form-label">Price</label>
         <div class="col-1">
             <input type="text" name="Price" value="@Model.Menu.Price" class="form-control" id="inputPrice">
